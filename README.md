@@ -223,4 +223,6 @@ Compress-Archive -Path * -DestinationPath Teste_Caetano_Matarazo_Granado.zip
 ## Contato
 
 Candidato: Caetano Matarazo Granado  
+email: cmatarazogranado@gmail.com
+linkedin: www.linkedin.com/in/caetanomatarazogranado/
 Vaga: Estágio
