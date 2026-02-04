@@ -188,7 +188,7 @@ Todos os trade-offs técnicos solicitados no teste foram documentados nos README
 - Cache vs queries diretas
 - Gerenciamento de estado no frontend (Pinia)
 
-## 📦 Como Gerar o ZIP Final
+## Como Gerar o ZIP Final
 
 Para criar o arquivo de submissão:
 
