@@ -7,9 +7,6 @@ __pycache__/
 env/
 venv/
 
-# Output and logs
-output/
-
 # Node
 node_modules/
 dist/
@@ -49,5 +46,3 @@ node_modules/
 .pytest_cache/
 .coverage
 htmlcov/
-*.md
-ESTRUTURA_PROJETO.txt
