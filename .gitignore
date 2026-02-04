@@ -1,0 +1,53 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Output and logs
+output/
+
+# Node
+node_modules/
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+.venv
+data/*.csv
+data/*.zip
+data/*.txt
+data/*.xlsx
+data/*.db
+output/*.csv
+output/*.zip
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.pytest_cache/
+.coverage
+htmlcov/
+*.md
+ESTRUTURA_PROJETO.txt

@@ -1,0 +1,164 @@
+{
+  "info": {
+    "name": "API ANS - Análise de Despesas",
+    "description": "Coleção de endpoints para consulta de dados de operadoras de planos de saúde",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["health"]
+        },
+        "description": "Verifica se a API está funcionando"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "GET",
+            "url": "http://localhost:8000/health"
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\n  \"status\": \"healthy\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Listar Operadoras - Página 1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/operadoras?page=1&limit=10",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "operadoras"],
+          "query": [
+            {"key": "page", "value": "1"},
+            {"key": "limit", "value": "10"}
+          ]
+        },
+        "description": "Lista operadoras com paginação"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"cnpj\": \"12345678000190\",\n      \"razao_social\": \"Operadora Exemplo Ltda\",\n      \"registro_ans\": \"123456\",\n      \"modalidade\": \"Medicina de Grupo\",\n      \"uf\": \"SP\",\n      \"total_despesas\": 1000000.50,\n      \"media_por_trimestre\": 333333.50,\n      \"numero_trimestres\": 3\n    }\n  ],\n  \"total\": 100,\n  \"page\": 1,\n  \"limit\": 10,\n  \"total_pages\": 10\n}"
+        }
+      ]
+    },
+    {
+      "name": "Buscar Operadoras por Nome/CNPJ",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/operadoras?page=1&limit=10&busca=Unimed",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "operadoras"],
+          "query": [
+            {"key": "page", "value": "1"},
+            {"key": "limit", "value": "10"},
+            {"key": "busca", "value": "Unimed"}
+          ]
+        },
+        "description": "Busca operadoras por razão social ou CNPJ"
+      }
+    },
+    {
+      "name": "Detalhes de Operadora por CNPJ",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/operadoras/12345678000190",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "operadoras", "12345678000190"]
+        },
+        "description": "Retorna detalhes completos de uma operadora"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\n  \"id\": 1,\n  \"cnpj\": \"12345678000190\",\n  \"razao_social\": \"Operadora Exemplo Ltda\",\n  \"registro_ans\": \"123456\",\n  \"modalidade\": \"Medicina de Grupo\",\n  \"uf\": \"SP\",\n  \"total_despesas\": 1000000.50,\n  \"media_por_trimestre\": 333333.50,\n  \"desvio_padrao\": 5000.25,\n  \"numero_trimestres\": 3\n}"
+        },
+        {
+          "name": "Not Found",
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "body": "{\n  \"detail\": \"Operadora não encontrada\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Despesas de Operadora",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/operadoras/12345678000190/despesas",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "operadoras", "12345678000190", "despesas"]
+        },
+        "description": "Retorna histórico de despesas de uma operadora"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\n  \"cnpj\": \"12345678000190\",\n  \"despesas\": [\n    {\n      \"id\": 1,\n      \"operadora_id\": 1,\n      \"ano\": 2024,\n      \"trimestre\": 1,\n      \"valor_despesas\": 300000.00,\n      \"periodo\": \"2024-Q1\"\n    },\n    {\n      \"id\": 2,\n      \"operadora_id\": 1,\n      \"ano\": 2024,\n      \"trimestre\": 2,\n      \"valor_despesas\": 350000.00,\n      \"periodo\": \"2024-Q2\"\n    }\n  ],\n  \"total\": 2\n}"
+        }
+      ]
+    },
+    {
+      "name": "Estatísticas Gerais",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/estatisticas",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "estatisticas"]
+        },
+        "description": "Retorna estatísticas agregadas e top operadoras"
+      },
+      "response": [
+        {
+          "name": "Success",
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "body": "{\n  \"total_operadoras\": 1500,\n  \"total_despesas\": 50000000000.00,\n  \"media_despesas\": 33333333.33,\n  \"top_5_operadoras\": [\n    {\n      \"cnpj\": \"12345678000190\",\n      \"razao_social\": \"Operadora Top 1\",\n      \"uf\": \"SP\",\n      \"total_despesas\": 5000000000.00\n    }\n  ],\n  \"distribuicao_uf\": [\n    {\n      \"uf\": \"SP\",\n      \"total_despesas\": 20000000000.00,\n      \"total_operadoras\": 500\n    }\n  ]\n}"
+        }
+      ]
+    }
+  ]
+}
